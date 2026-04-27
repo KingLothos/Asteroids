@@ -45,6 +45,14 @@ def main():
                 log_event("player_hit")
                 sys.exit()
 
+        # Shot collision check: Shot vs Asteroids
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    log_event("asteroid_shot")
+                    asteroid.kill()
+                    shot.kill()
+
         screen.fill("black")
 
         for obj in drawable:
